@@ -39,6 +39,7 @@ APIs → Ingesta → Bronze → Silver → Gold
 
 ## Estructura
 
+```text
 ├── README.md
 ├── config
 │   └── config.yaml
@@ -52,6 +53,7 @@ APIs → Ingesta → Bronze → Silver → Gold
     ├── config_loader.py
     ├── logger.py
     └── storage.py
+```
 
 ## Tecnologías Utilizadas
 
