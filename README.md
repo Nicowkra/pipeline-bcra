@@ -1,7 +1,7 @@
-# 📊 Argentina Economic Pipeline
+# Argentina Economic Pipeline
 Este proyecto es un pipeline de datos ETL que extrae, procesa y cruza información de la API del Banco Central de la República Argentina con la cotización del Dólar Blue. El objetivo es calcular KPIs financieros listos para ser consumidos por herramientas de Business Intelligence.
 
-## 🧠 Objetivo
+## Objetivo
 
 Construir un pipeline end-to-end que:
 
@@ -10,7 +10,7 @@ Construir un pipeline end-to-end que:
 - Limpia y unifica la información (Silver)
 - Genera métricas analíticas (Gold)
 
-## 📈 Métricas generadas
+## Métricas generadas
 
 - Brecha cambiaria
 - Spread dólar oficial y blue
@@ -19,7 +19,7 @@ Construir un pipeline end-to-end que:
 - Promedio móvil semanal
 - Volatilidad precio del dólar semanal
 
-## 🏗️ Arquitectura de Datos
+## Arquitectura de Datos
 
 APIs → Ingesta → Bronze → Silver → Gold
 
@@ -37,7 +37,23 @@ APIs → Ingesta → Bronze → Silver → Gold
      - **Variación 24hs (Crawling Peg & Emisión).**
      - **Rolling Mean & Volatility (Desviación Estándar a 7 días).**
 
-## 🛠️ Tecnologías Utilizadas
+## Estructura
+
+├── README.md
+├── config
+│   └── config.yaml
+├── jobs
+│   ├── agg.py
+│   ├── clean.py
+│   └── ingesta.py
+├── requirements.txt
+└── utils
+    ├── client.py
+    ├── config_loader.py
+    ├── logger.py
+    └── storage.py
+
+## Tecnologías Utilizadas
 
 * **Lenguaje:** Python
 * **Procesamiento de Datos:** Apache Spark, Pandas
@@ -45,7 +61,7 @@ APIs → Ingesta → Bronze → Silver → Gold
 * **Ingesta:** APIs Requests 
 * **Gestión de Configuración:** YAML
 
-## 🚀 Próximos pasos
+## Próximos pasos
 
 - Orquestación con Airflow
 - Dashboard (Streamlit / Power BI)
