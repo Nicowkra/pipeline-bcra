@@ -23,9 +23,9 @@ Construir un pipeline end-to-end que:
 
 APIs → Ingesta → Bronze → Silver → Gold
 
-1. **Bronze Layer (Raw):** - Extracción de datos crudos mediante `requests` y `pandas`.
+1. **Bronze Layer (Raw):** - Extracción de datos crudos mediante requests y pandas.
    - APIs consumidas: BCRA (Oficial, Reservas, Inflación, Base Monetaria) y ArgentinaDatos (Dólar Blue).
-   - Guardado en formato `Parquet`, particionado por variable y fecha de ingesta.
+   - Guardado en formato parquet, particionado por variable y fecha de ingesta.
 
 2. **Silver Layer (Clean & Conformed):** - Procesamiento con **PySpark**.
    - Casteo de tipos de datos, eliminación de duplicados y Outer Join de todas las series temporales en una única tabla.
