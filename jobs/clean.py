@@ -27,7 +27,6 @@ BASE_PATH = os.path.join(
 config = load_config()
 
 
-# 4. Leer datos bronze (CORREGIDO)
 def load_variable(variable_name):
     path = os.path.join(BASE_PATH, f"variable={variable_name}")
     df = spark.read.parquet(path)
@@ -62,10 +61,10 @@ def run():
         dfs
     )
 
-    # 7. Ordenar por fecha
+
     df_final = df_final.orderBy("date")
 
-    # 8. Forward fill (muy importante)
+    #Forward fill
     from pyspark.sql.window import Window
     from pyspark.sql.functions import last
 

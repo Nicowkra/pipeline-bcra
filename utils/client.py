@@ -3,7 +3,6 @@ import requests
 from utils.config_loader import load_config
 from utils.logger import get_logger
 
-# Inicializamos el logger y la configuración
 logger = get_logger(__name__) 
 config = load_config()
 
@@ -48,11 +47,9 @@ def get_blue(desde, hasta):
         
         resultados = []
         for fila in data:
-            # Filtramos por fecha y estandarizamos las claves
             if desde <= fila["fecha"] <= hasta:
                 resultados.append({
                     "fecha": fila["fecha"],
-                    # Promedio entre las puntas compradora y vendedora (Mid-price)
                     "valor": (fila["venta"] + fila["compra"]) / 2  
                 })
                 
