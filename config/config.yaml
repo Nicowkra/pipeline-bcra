@@ -1,0 +1,16 @@
+variables:
+  dolar_oficial: 5
+  reservas: 1
+  base_monetaria: 7
+  inflacion: 28
+
+api:
+  base_url: "https://api.bcra.gob.ar/estadisticas/v4.0"
+  argDatos_url: "https://api.argentinadatos.com/v1/cotizaciones/dolares/blue"
+  
+metricas:
+  - dolar_oficial
+  - reservas
+  - base_monetaria
+  - inflacion
+  - dolar_blue
