@@ -7,7 +7,7 @@ from utils.logger import get_logger
 logger = get_logger(__name__) 
 
 #TEMPORAL
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+#sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
 spark = SparkSession.builder \

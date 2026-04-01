@@ -10,14 +10,13 @@ Construir un pipeline end-to-end que:
 - Limpia y unifica la información (Silver)
 - Genera métricas analíticas (Gold)
 
-## Métricas generadas
+## Tecnologías Utilizadas
 
-- Brecha cambiaria
-- Spread dólar oficial y blue
-- Variación diaria oficial y blue
-- Emisión monetaria (variación)
-- Promedio móvil semanal
-- Volatilidad precio del dólar semanal
+* **Lenguaje:** Python
+* **Procesamiento de Datos:** Apache Spark, Pandas
+* **Almacenamiento:** Parquet 
+* **Ingesta:** APIs Requests 
+* **Gestión de Configuración:** YAML
 
 ## Arquitectura de Datos
 
@@ -36,6 +35,15 @@ APIs → Ingesta → Bronze → Silver → Gold
      - **Brecha Cambiaria & Spread Absoluto.**
      - **Variación 24hs (Crawling Peg & Emisión).**
      - **Rolling Mean & Volatility (Desviación Estándar a 7 días).**
+     
+## Métricas generadas
+
+- Brecha cambiaria
+- Spread dólar oficial y blue
+- Variación diaria oficial y blue
+- Emisión monetaria (variación)
+- Promedio móvil semanal
+- Volatilidad precio del dólar semanal
 
 ## Estructura
 
@@ -55,16 +63,15 @@ APIs → Ingesta → Bronze → Silver → Gold
     └── storage.py
 ```
 
-## Tecnologías Utilizadas
+## Logging
 
-* **Lenguaje:** Python
-* **Procesamiento de Datos:** Apache Spark, Pandas
-* **Almacenamiento:** Parquet 
-* **Ingesta:** APIs Requests 
-* **Gestión de Configuración:** YAML
+El pipeline implementa logging estructurado utilizando el módulo logging de Python.
+
+- Registro de eventos clave (ingesta, transformaciones, guardado)
+- Manejo de errores en llamadas a APIs
+- Trazabilidad del pipeline completo
 
 ## Próximos pasos
 
-- Orquestación con Airflow
 - Dashboard (Streamlit / Power BI)
-- Deploy en cloud
+- Deploy en Azure Databricks

@@ -4,7 +4,7 @@ from datetime import datetime
 import pandas as pd
 
 #TEMPORAL
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+#sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils.client import get_variable, get_blue
 from utils.config_loader import load_config
