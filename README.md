@@ -94,10 +94,11 @@ Características:
 - Monitoreo de ejecución y logs desde la UI de Airflow
 
 ## Ejemplo de dataset (Gold)
-
+```markdown
       date  dolar_oficial  dolar_blue    brecha  spread  volatilidad7d
 2026-03-31        1382.76      1400.0  0.012468   17.24       7.831158
 2026-03-30        1394.92      1415.0  0.014395   20.08       9.479877
 2026-03-29        1376.10      1405.0  0.021001   28.90       9.123468
 2026-03-28        1376.10      1405.0  0.021001   28.90       9.999157
 2026-03-27        1376.10      1405.0  0.021001   28.90      10.119820
+```
