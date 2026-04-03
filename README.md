@@ -5,6 +5,7 @@ Este proyecto es un pipeline de datos ETL que extrae, procesa y cruza informaci�
 
 Construir un pipeline end-to-end que:
 
+- Orquesta y automatiza todo el ciclo de vida del dato
 - Ingesta datos desde APIs públicas
 - Los almacena en un data lake (Bronze)
 - Limpia y unifica la información (Silver)
@@ -13,14 +14,15 @@ Construir un pipeline end-to-end que:
 ## Tecnologías Utilizadas
 
 * **Lenguaje:** Python
-* **Procesamiento de Datos:** Apache Spark, Pandas
+* **Orquestación:** Apache Airflow (DAG + scheduling + retries)
+* **Procesamiento de Datos:** PySpark, Pandas
 * **Almacenamiento:** Parquet 
-* **Ingesta:** APIs Requests 
+* **Ingesta:** APIs REST (BCRA, ArgentinaDatos) mediante Requests
 * **Gestión de Configuración:** YAML
 
 ## Arquitectura de Datos
 
-APIs → Ingesta → Bronze → Silver → Gold
+APIs → Bronze → Silver → Gold
 
 1. **Bronze Layer (Raw):** - Extracción de datos crudos mediante requests y pandas.
    - APIs consumidas: BCRA (Oficial, Reservas, Inflación, Base Monetaria) y ArgentinaDatos (Dólar Blue).
@@ -71,7 +73,31 @@ El pipeline implementa logging estructurado utilizando el módulo logging de Pyt
 - Manejo de errores en llamadas a APIs
 - Trazabilidad del pipeline completo
 
-## Próximos pasos
+## Orquestación con Airflow
 
-- Dashboard (Streamlit / Power BI)
-- Deploy en Azure Databricks
+El pipeline se encuentra orquestado utilizando Apache Airflow, permitiendo automatizar la ejecución completa del flujo de datos.
+
+Se definió un DAG con las siguientes tareas:
+
+- `ingest`: extracción de datos desde APIs y guardado en la capa Bronze
+- `clean`: procesamiento y unificación en la capa Silver
+- `agg`: generación de métricas en la capa Gold
+
+Dependencias del pipeline:
+
+ingest → clean → agg
+
+Características:
+
+- Ejecución programada diaria (`@daily`)
+- Reintentos automáticos ante fallas
+- Monitoreo de ejecución y logs desde la UI de Airflow
+
+## Ejemplo de dataset (Gold)
+
+      date  dolar_oficial  dolar_blue    brecha  spread  volatilidad7d
+2026-03-31        1382.76      1400.0  0.012468   17.24       7.831158
+2026-03-30        1394.92      1415.0  0.014395   20.08       9.479877
+2026-03-29        1376.10      1405.0  0.021001   28.90       9.123468
+2026-03-28        1376.10      1405.0  0.021001   28.90       9.999157
+2026-03-27        1376.10      1405.0  0.021001   28.90      10.119820
